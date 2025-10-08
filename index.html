@@ -1,0 +1,63 @@
+<!-- Game Screen -->
+        <div id="gameScreen" class="game-screen hidden">
+            <div class="status" id="status">Player X's Turn</div>
+            <div class="board" id="board"></div>
+            <button class="reset-btn" id="resetBtn">New Game</button>
+            <button class="menu-btn-small" id="backBtn">Back to Menu</button>
+        </div><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - Multiplayer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Background -->
+    <div class="floating-bg">
+        <div class="floating-shape">X</div>
+        <div class="floating-shape">O</div>
+        <div class="floating-shape">Δ</div>
+        <div class="floating-shape">◇</div>
+        <div class="floating-shape">X</div>
+        <div class="floating-shape">O</div>
+        <div class="floating-shape">Δ</div>
+        <div class="floating-shape">◇</div>
+        <div class="floating-shape">X</div>
+        <div class="floating-shape">O</div>
+        <div class="floating-shape">Δ</div>
+        <div class="floating-shape">◇</div>
+    </div>
+
+    <div class="container">
+        <h1>Tic-Tac-Toe</h1>
+        
+        <!-- Menu Screen -->
+        <div id="menu" class="menu">
+            <h2>Select Number of Players</h2>
+            <div class="menu-buttons">
+                <button class="menu-btn" data-players="2">2 Players</button>
+                <button class="menu-btn" data-players="3">3 Players</button>
+                <button class="menu-btn" data-players="4">4 Players</button>
+            </div>
+        </div>
+
+        <!-- Player Profiles -->
+        <div id="playerProfiles" class="player-profiles hidden">
+            <h2>Players</h2>
+            <div id="profileList" class="profile-list"></div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="game-screen hidden">
+            <div class="status" id="status">Player X's Turn</div>
+            <div class="board" id="board"></div>
+            <button class="reset-btn" id="resetBtn">New Game</button>
+            <button class="menu-btn-small" id="backBtn">Back to Menu</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <div class="credit">Made by Yluj Peningolo</div>
+</body>
+</html>

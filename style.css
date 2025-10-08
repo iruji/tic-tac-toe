@@ -1,0 +1,436 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating Background Shapes */
+.floating-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-shape {
+    position: absolute;
+    font-size: 3em;
+    color: #000000;
+    opacity: 0.10;
+    animation: float linear infinite;
+    top: 100vh;
+}
+
+@keyframes float {
+    0% {
+        top: 100vh;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: -10vh;
+        transform: rotate(360deg);
+    }
+}
+
+.floating-shape:nth-child(1) { left: 10%; animation-duration: 25s; animation-delay: 0s; }
+.floating-shape:nth-child(2) { left: 20%; animation-duration: 30s; animation-delay: 2s; }
+.floating-shape:nth-child(3) { left: 30%; animation-duration: 28s; animation-delay: 4s; }
+.floating-shape:nth-child(4) { left: 40%; animation-duration: 32s; animation-delay: 1s; }
+.floating-shape:nth-child(5) { left: 50%; animation-duration: 27s; animation-delay: 3s; }
+.floating-shape:nth-child(6) { left: 60%; animation-duration: 29s; animation-delay: 5s; }
+.floating-shape:nth-child(7) { left: 70%; animation-duration: 31s; animation-delay: 2s; }
+.floating-shape:nth-child(8) { left: 80%; animation-duration: 26s; animation-delay: 4s; }
+.floating-shape:nth-child(9) { left: 15%; animation-duration: 33s; animation-delay: 1s; }
+.floating-shape:nth-child(10) { left: 85%; animation-duration: 28s; animation-delay: 3s; }
+.floating-shape:nth-child(11) { left: 25%; animation-duration: 30s; animation-delay: 0s; }
+.floating-shape:nth-child(12) { left: 75%; animation-duration: 29s; animation-delay: 5s; }
+
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    color: #000000;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #000000;
+    margin-bottom: 40px;
+    font-size: 1.2em;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Menu Styles */
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 40%;
+    justify-content: center;
+    padding: 40px;
+    transition: all 0.3s ease;
+}
+
+.menu.with-profiles {
+    height: auto;
+    justify-content: flex-start;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.menu.with-profiles h2 {
+    display: none;
+}
+
+.menu.with-profiles .menu-buttons {
+    display: none;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Player Profiles */
+.player-profiles {
+    position: fixed;
+    left: 0;
+    top: 100px;
+    width: 40%;
+    padding: 0 40px 40px 40px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.player-profiles h2 {
+    margin-bottom: 20px;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.player-profiles h2 {
+    margin-bottom: 20px;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.profile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.player-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #000000;
+    transition: background 0.2s ease;
+}
+
+.player-profile.active {
+    background: #000000;
+    color: #ffffff;
+}
+
+.player-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    border: 1px solid currentColor;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.player-icon:hover {
+    transform: scale(1.1);
+}
+
+.player-info {
+    flex: 1;
+}
+
+.player-name {
+    font-weight: 300;
+    font-size: 1em;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.player-score {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+/* Icon Picker Modal */
+.icon-picker {
+    position: fixed;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border: 2px solid #000000;
+    padding: 30px;
+    z-index: 1000;
+    display: none;
+}
+
+.icon-picker.active {
+    display: block;
+}
+
+.icon-picker h3 {
+    font-size: 1em;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.icon-option {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    border: 1px solid #000000;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon-option:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.close-picker {
+    width: 100%;
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.close-picker:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.menu-btn {
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 20px 60px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    min-width: 200px;
+}
+
+.menu-btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.menu-btn-small {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    padding: 10px 24px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.menu-btn-small:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+/* Game Screen */
+.game-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 60%;
+    justify-content: center;
+    background: #ffffff;
+    padding: 40px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.status {
+    font-size: 1em;
+    margin-bottom: 30px;
+    color: #000000;
+    font-weight: 300;
+    min-height: 24px;
+    letter-spacing: 1px;
+}
+
+.board {
+    display: grid;
+    gap: 1px;
+    margin: 0 auto 40px;
+    justify-content: center;
+    background: #000000;
+    border: 1px solid #000000;
+}
+
+/* Default 3x3 - Largest */
+.board.size-3,
+.board:not(.size-4):not(.size-5) {
+    grid-template-columns: repeat(3, 140px);
+    grid-template-rows: repeat(3, 140px);
+}
+
+/* 4x4 - Medium */
+.board.size-4 {
+    grid-template-columns: repeat(4, 100px) !important;
+    grid-template-rows: repeat(4, 100px) !important;
+}
+
+/* 5x5 - Smallest per cell */
+.board.size-5 {
+    grid-template-columns: repeat(5, 80px) !important;
+    grid-template-rows: repeat(5, 80px) !important;
+}
+
+.cell {
+    background: #ffffff;
+    border: none;
+    font-size: 3em;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board.size-4 .cell {
+    font-size: 2.5em;
+}
+
+.board.size-5 .cell {
+    font-size: 2em;
+}
+
+.cell:hover:not(.taken) {
+    background: #f5f5f5;
+}
+
+.cell.taken {
+    cursor: default;
+    animation: placeMove 0.3s ease-out;
+}
+
+@keyframes placeMove {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.cell.winner {
+    background: #000000;
+    color: #ffffff;
+}
+
+.reset-btn {
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 12px 32px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.reset-btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Credit */
+.credit {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 0.8em;
+    color: #000000;
+    opacity: 0.5;
+    font-weight: 300;
+    letter-spacing: 1px;
+    z-index: 10;
+}
